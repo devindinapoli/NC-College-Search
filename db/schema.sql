@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS nc_schools;
-
 CREATE DATABASE nc_schools;
 USE nc_schools;
 
@@ -10,7 +8,6 @@ CREATE TABLE school (
     zip INT NOT NULL,
 	url VARCHAR(255) NOT NULL,
     in_state INT NOT NULL,
-    out_state INT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -20,3 +17,5 @@ CREATE TABLE student (
     program VARCHAR(255) NOT NULL,
     home_state VARCHAR(255) NOT NULL
 );
+
+SELECT * FROM school;
