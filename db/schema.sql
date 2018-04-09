@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS nc_schools;
+
 CREATE DATABASE nc_schools;
 USE nc_schools;
 
