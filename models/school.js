@@ -22,6 +22,14 @@ module.exports = function(sequelize,DataTypes) {
 }
     
 
+//School.associate = function(models) {
+    //School.belongsTo(models.Student, {
+        //foreignKey: {
+            //allowNull: false
+        //}
+    //});
+//}
+
 
 
 
