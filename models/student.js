@@ -1,16 +1,25 @@
 module.exports = function(sequelize,DataTypes) {
     var Student = sequelize.define("Student", {
-        student_name: {
+        first_name: {
+            type: DataTypes.STRING
+        },
+        last_name: {
+            type: DataTypes.STRING
+        },
+        email: {
             type: DataTypes.STRING
         },
         degree_type: {
             type: DataTypes.STRING
         },
+        home_state: {
+            type: DataTypes.STRING
+        },
         program: {
             type: DataTypes.STRING
         },
-        home_state: {
-            type: DataTypes.STRING
+        max_tuition: {
+            type: DataTypes.INTEGER
         }
     }, {
         timestamps: false
@@ -18,9 +27,3 @@ module.exports = function(sequelize,DataTypes) {
     return Student
 }
     
-
-//Student.associate = function(models) {
-    //Student.hasMany(models.School, {
-        //onDelete: "cascade"
-    //});
-//}

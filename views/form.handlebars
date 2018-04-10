@@ -25,7 +25,7 @@
     
         <div class="row">
         <label>Degree Type</label>
-        <select class="browser-default">
+        <select class="browser-default" id="degree">
             <option value="" disabled selected>Choose One:</option>
             <option value="1">2 Year Degree (Associates)</option>
             <option value="2">4 Year Degree (Bachelors)</option>
@@ -34,7 +34,7 @@
     
         <div class="row">
             <label>Home State</label>
-            <select class="browser-default">
+            <select class="browser-default" id="state">
                 <option value="" disabled selected>Choose One:</option>
                 <option value="AL">Alabama</option>
             
@@ -158,7 +158,7 @@
     
         <div class="row">
             <label>Program</label>
-            <select class="browser-default">
+            <select class="browser-default" id="program">
                 <option value="" disabled selected>Choose One:</option>
                 <option value="agriculture">Agriculture, Agriculture Operations, and Related Sciences</option>
         
@@ -247,12 +247,37 @@
         </div>
         
         <div class="row">
-            <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
-            </button>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Guest Search
+            <a class="btn waves-effect waves-light blue" href="/results" type="submit" name="action" id="submit">Submit
+            </button></a>
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="guestSubmit">Guest Search
             </button>
         </div>
         </form>
         
     </div>
 
+   <script type="text/javascript">
+
+   $(document).ready(function(){
+
+    $("#submit").on("click", function(event){
+
+        var userInput = {
+            first_name: $("#first_name").val().trim(),
+            last_name: $("#last_name").val().trim(),
+            email: $("#email").val().trim(),
+            degree_type: $("#degree").val().trim(),
+            home_state: $("#state").val().trim(),
+            program: $("#program").val().trim(),
+            max_tuition: $("#price").val().trim() 
+        };
+
+        $.post("/api/students", userInput);
+        console.log('userInput = ' + JSON.stringify(userInput));
+
+        })
+
+
+    })
+   
+   </script>

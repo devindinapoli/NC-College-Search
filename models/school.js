@@ -9,7 +9,7 @@ module.exports = function(sequelize,DataTypes) {
         zip: {
             type: DataTypes.INTEGER
         },
-        url: {
+        school_url: {
             type: DataTypes.STRING
         },
         in_state: {
@@ -21,15 +21,6 @@ module.exports = function(sequelize,DataTypes) {
     return School
 }
     
-
-//School.associate = function(models) {
-    //School.belongsTo(models.Student, {
-        //foreignKey: {
-            //allowNull: false
-        //}
-    //});
-//}
-
 
 
 

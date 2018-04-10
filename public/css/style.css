@@ -16,3 +16,12 @@ nav {
     background: steelblue;
 }
 
+
+.material-icons {
+    color: steelblue;
+}
+
+#rememberMe [type=checkbox]:checked {
+    background: steelblue;
+}
+
