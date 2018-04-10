@@ -1,10 +1,8 @@
-<h2 class="center-align">Find the Perfect College</h2>
+{{!-- <h2 class="center-align">Find the Perfect College</h2> --}}
     
     <div class="container">
     
-    <h2 class="center-align">College Match</h2>
-    
-        <p>User Search</p>
+    <h2 class="center-align">Search North Carolina's Colleges</h2>
     
         <form class="col s12">
             <div class="row">
@@ -242,15 +240,10 @@
         </div>
     
         <div class="row">
-    
             <div class="input-field col s6">
                 <input id="price" type="text" class="validate">
                 <label for="price">Maximum Tuition ($)</label>
             </div>
-            <!-- <label>Maximum Tuition</label>
-            <p class="range-field">
-                <input type="range" id="test5" min="0" max="50000" />
-            </p> -->
         </div>
         
         <div class="row">
@@ -282,9 +275,9 @@
         $.post("/api/students", userInput);
         console.log('userInput = ' + JSON.stringify(userInput));
 
+        })
+
+
     })
-
-
-})
    
    </script>
