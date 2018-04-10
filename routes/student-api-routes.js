@@ -3,7 +3,6 @@ var db = require("../models");
 module.exports = function(app) {
     app.get("/api/students", function(req,res) { 
         db.Student.findAll({
-           include: [db.School]
         }).then(function(dbStudent){
             res.json(dbStudent);
         });
@@ -26,7 +25,7 @@ module.exports = function(app) {
        });
    });
 
-   app.delete("/api/authors/:id", function(req,res) {
+   app.delete("/api/students/:id", function(req,res) {
        db.Student.destroy({
            where: {
               id: req.params.id
