@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 var app = express();
 
@@ -27,8 +27,8 @@ require("./routes/html-routes.js")(app);
 
 var db = require("./models");
 
-db.sequelize.sync().then(function(){
+// db.sequelize.sync().then(function(){
   app.listen(PORT, function() {
     console.log("App now listening at http://localhost:" + PORT);
   }); 
-});
+// });
