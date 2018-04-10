@@ -20,13 +20,15 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/collegesController.js");
 
+require("./routes/school-api-routes.js")(app);
+//require("./routes/student-api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 var db = require("./models");
 
 db.sequelize.sync().then(function(){
   app.listen(PORT, function() {
-    console.log("App now listening at localhost:" + PORT);
+    console.log("App now listening at http://localhost:" + PORT);
   }); 
 });
