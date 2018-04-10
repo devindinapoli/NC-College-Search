@@ -1,3 +1,12 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
 /* Nav Bar style */
 nav {
     background: skyblue;
@@ -7,6 +16,7 @@ nav {
     background: steelblue;
 }
 
+
 .material-icons {
     color: steelblue;
 }
@@ -14,3 +24,4 @@ nav {
 #rememberMe [type=checkbox]:checked {
     background: steelblue;
 }
+
