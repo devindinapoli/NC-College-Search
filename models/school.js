@@ -9,7 +9,7 @@ module.exports = function(sequelize,DataTypes) {
         zip: {
             type: DataTypes.INTEGER
         },
-        url: {
+        school_url: {
             type: DataTypes.STRING
         },
         in_state: {
