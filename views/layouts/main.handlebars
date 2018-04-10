@@ -16,14 +16,14 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Linkning personal style sheet -->
-        <link rel="stylesheet" href="/css/style.css" type='text/css'>
+        <link rel="stylesheet" href="public/css/style.css" type='text/css'>
 
         <title>Document</title>
     </head>
 
     <body>
         <!-- Nav Bar -->
-        <nav class="nav-extended light-blue accent-3">
+        <nav class="nav-extended">
             <div class="nav-wrapper container">
               <a href="main.handlebars" class="brand-logo">Logo</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -33,12 +33,12 @@
                 <li><a href="collapsible.html">JavaScript</a></li>
               </ul>
             </div>
-            <div class="nav-content">
+            <div class="nav-content row">
               <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="#test1">Test 1</a></li>
-                <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-                <li class="tab"><a href="#test4">Test 4</a></li>
+                <li class="tab bluetabs col l3"><a href="#test1">Test 1</a></li>
+                <li class="tab bluetabs col l3"><a class="active" href="#test2">Test 2</a></li>
+                <li class="tab disabled bluetabs col l3"><a href="#test3">Disabled Tab</a></li>
+                <li class="tab bluetabs col l3"><a href="#test4">Test 4</a></li>
               </ul>
             </div>
         </nav>
@@ -54,6 +54,8 @@
         <div id="test3" class="col s12"></div>
         <div id="test4" class="col s12"></div>       
 
+        
+
         {{{body}}}
 
         <script>
@@ -62,10 +64,20 @@
                 $(function(){
 
                 $('.sidenav').sidenav();
+                $('.parallax').parallax();
 
                 }); // end of document ready
             })(jQuery); // end of jQuery name space
 
+            // For selecting colleges on results page
+            $(document).on("click", ".collection-item", function () {
+                if ($(this).attr("class") === "collection-item") {
+                    $(this).attr("class", "collection-item active");
+                }
+                else {
+                    $(this).attr("class", "collection-item");
+                }
+            })
         </script>
     </body>
 

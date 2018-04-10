@@ -55,11 +55,6 @@
         <div id="test4" class="col s12"></div>       
 
         
-        <!-- Stuff that goes in results page -->
-
-        
-
-        <!-- End Results page -->
 
         {{{body}}}
 
@@ -74,6 +69,15 @@
                 }); // end of document ready
             })(jQuery); // end of jQuery name space
 
+            // For selecting colleges on results page
+            $(document).on("click", ".collection-item", function () {
+                if ($(this).attr("class") === "collection-item") {
+                    $(this).attr("class", "collection-item active");
+                }
+                else {
+                    $(this).attr("class", "collection-item");
+                }
+            })
         </script>
     </body>
 
