@@ -17,4 +17,14 @@ module.exports = function(app) {
         res.render(path.join("signup"));
     })
 
+<<<<<<< HEAD
+=======
+   app.get("/form", function(req,res) {
+       res.render(path.join("form"));
+   })
+
+   app.get("/profile", function(req,res) {
+    res.render(path.join("profile"));
+})
+>>>>>>> 922aedb85eac18caed225e4dfd7145fc3a6eab55
 }
