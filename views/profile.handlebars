@@ -26,7 +26,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id=searched>
                 <tr>
                     <td>Alvin</td>
                     <td>Eclair</td>
@@ -51,5 +51,51 @@
 <script>
 
 // Link to firebase js file for profile
+
+$(document).ready(function(){
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
+        authDomain: "college-finder-738c6.firebaseapp.com",
+        databaseURL: "https://college-finder-738c6.firebaseio.com",
+        projectId: "college-finder-738c6",
+        storageBucket: "college-finder-738c6.appspot.com",
+        messagingSenderId: "1076388845287"
+    };
+
+    firebase.initializeApp(config);
+    var city = 'Charlotte';
+    
+    // console.log('current user: ' + firebase.auth().currentUser.uid);
+    // displaySearches(firebase.auth().currentUser.uid);
+
+    function displaySearches(userId) {
+        firebase.database().ref('users/' + userId).child('searches').limitToLast(5).on('child_added', function(snap) {    
+            var count = $('#searched tr').length;
+            if (count > 5) {
+                $('#searched tr:last').remove();
+            }
+            $('#searched').prepend('<tr class="trow"><td> ' +
+                city + '</td><td> ' +
+                snap.val().degree_type + ' </td><td> ' +
+                snap.val().program + ' </td><td> ' +
+                snap.val().max_tuition + ' </td></tr>');
+            }, function(errorObject) {
+            console.log('The read failed: ' + errorObject.code);
+        });
+    };
+
+    // add realtime listener to check if a user is logged in
+    // remove this listener from submit page when login is available on main page
+    firebase.auth().onAuthStateChanged(function (firebaseUser) {
+        if(firebaseUser) {
+            console.log(firebase.auth().currentUser.email + ' is currently logged in.');
+            displaySearches(firebase.auth().currentUser.uid);
+        } else {
+            console.log('Not logged in.');
+        };
+    }); 
+
+});
 
 </script>

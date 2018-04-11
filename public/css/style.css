@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: snow;
   }
 
   main {
@@ -24,4 +25,9 @@ nav {
 #rememberMe [type=checkbox]:checked {
     background: steelblue;
 }
+
+.parallax-container {
+    height: 350px;
+}
+
 
