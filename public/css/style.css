@@ -28,9 +28,10 @@ nav {
 
 .parallax-container {
     height: 350px;
-
 }
 
-
-
+.results-field {
+    height: 400px;
+    overflow: scroll;
+}
 
