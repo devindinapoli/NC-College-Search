@@ -7,12 +7,24 @@
 </div>
 
 <div class="container">
+
+    {{!-- Intro goes here --}}
+
+
+
+
     <div class="section">
         <div class="row">
             <div class="row topColleges">
                 <h4>Top Colleges In NC</h4>
-                {{!-- dynamically generated colleg cards go here --}}
+                {{!-- dynamically generated college cards go here --}}
             </div>
+            <img src="/images/rankingseal.png" style='height:100px;width:200px;display:block;margin:0 auto;' alt="ranking seal">
+            <div class="row topCommunityColleges">
+                <h4>Top Community Colleges</h4>
+                {{!-- dynamicall generate community colleges here  --}}
+            </div>
+            <img src="/images/rankingseal.png" style='height:100px;width:200px;display:block;margin:0 auto;' alt="ranking seal">
             <div class="icon-block">
                 <br>
                 <br>
@@ -114,6 +126,7 @@
 
 <script>
     $(document).ready(function () {
+        // populate top colleges
         var name = ['UNC', 'DUKE', 'NCSU', 'DAVIDSON', 'UNCSA', 'WAKE', 'APP', 'GCD'];
         var source = ['/images/UNC.jpg', "/images/DUKE.png", "/images/NCState.png", "/images/Davidson.jpg", "/images/UNCSA.jpg", "/images/WF.jpg", '/images/app.png', '/images/grace.jpeg'];
         var website = ["https://www.unc.edu/", "https://www.duke.edu/", "https://www.ncsu.edu/", "https://www.davidson.edu/", "https://www.uncsa.edu/", "https://www.wfu.edu/", "https://www.appstate.edu/", "https://www.gcd.edu/"];
@@ -122,7 +135,7 @@
 
         for (var i = 0; i < 8; i++) {
             $('.topColleges').append(
-                "<div class='col l3 m4 s6'> <div class='card'> <div class='card-image waves-effect waves-block waves-light'> <img class='activator' src=" + source[i] + '>' +
+                "<div class='col l3 m6 s6'> <div class='card'> <div class='card-image waves-effect waves-block waves-light'> <img class='activator' src=" + source[i] + '>' +
                 '</div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + name[i] +
                 '<i class="material-icons right">more_vert</i></span><p><a href=' + website[i] +
                 '>More Info</a></p></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">' + name[i] +
@@ -131,6 +144,26 @@
                 '</p></p></div></div></div>'
             );
         }
+
+        // populate community colleges
+        var ccName = ['PCC', 'JSCC', 'CCC', 'ICC', 'MCC', 'RCCC', 'CCCC', 'ACC'];
+        var ccSource = ['/images/pamlico.jpg', "/images/james.jpg", "/images/ccc.gif", "/images/isothermal.jpg", "/images/mcc.png", "/images/rc.png", '/images/cccc.jpg', '/images/alamance.jpg'];
+        var ccWebsite = ["https://www.pamlicocc.edu/", "https://www.jamessprunt.edu/", "https://www.clevelandcc.edu/", "https://www.isothermal.edu/", "https://www.montgomery.edu/", "https://www.roanokechowan.edu/", "https://www.cccc.edu/", "https://www.alamancecc.edu/"];
+        var ccGradRate = ['53%', '19%', '21%', '10%', '28%', '18%', '25%', '29%'];
+        var ccCost = [];
+
+        for (var i = 0; i < 8; i++) {
+            $('.topCommunityColleges').append(
+                "<div class='col l3 m6 s6'> <div class='card'> <div class='card-image waves-effect waves-block waves-light'> <img class='activator' src=" + ccSource[i] + '>' +
+                '</div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + ccName[i] +
+                '<i class="material-icons right">more_vert</i></span><p><a href=' + ccWebsite[i] +
+                '>More Info</a></p></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">' + ccName[i] +
+                '<i class="material-icons right">close</i></span><br><p><p>COST</p>' +
+                '</p><br><p><p>GRADUATION RATE</p><p>' + ccGradRate[i] +
+                '</p></p></div></div></div>'
+            );
+        }
+
     });
 </script>
 <!-- End index.handlebars -->
