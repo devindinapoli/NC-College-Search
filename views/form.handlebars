@@ -149,6 +149,7 @@
         
         $("#submit").on("click", function(event){
             $('.results-field').show();
+            $('.results-field').empty();
 
             // added event.preventDefault(); to test sending searches to firebase
             // the userInput object and $.post causing errors and breaking page before running firebase code
