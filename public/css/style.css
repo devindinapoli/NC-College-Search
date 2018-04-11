@@ -3,11 +3,11 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: snow;
-  }
+}
 
-  main {
+main {
     flex: 1 0 auto;
-  }
+}
 /* Nav Bar style */
 nav {
     background: skyblue;
@@ -34,3 +34,4 @@ nav {
     height: 400px;
     overflow: scroll;
 }
+
