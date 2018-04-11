@@ -156,18 +156,7 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
-            authDomain: "college-finder-738c6.firebaseapp.com",
-            databaseURL: "https://college-finder-738c6.firebaseio.com",
-            projectId: "college-finder-738c6",
-            storageBucket: "college-finder-738c6.appspot.com",
-            messagingSenderId: "1076388845287"
-        };
-
-        firebase.initializeApp(config);
-
+        
         $("#submit").on("click", function(event){
             $('.results-field').show();
 
@@ -203,7 +192,6 @@
             // send user data to firebase
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
-
             $.get("/api/schools", function(data){
                 for(var i = 0; i < data.length; i++) {
                     if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
@@ -212,18 +200,7 @@
                 }
             })
 
-
-        })
-
-        // add realtime listener to check if a user is logged in
-        // remove this listener from submit page when login is available on main page
-        firebase.auth().onAuthStateChanged(function (firebaseUser) {
-            if(firebaseUser) {
-                console.log(firebase.auth().currentUser.email + ' is currently logged in.');
-            } else {
-                console.log('Not logged in.');
-            };
-        });    
+        })         
    
         // function that adds new user search to firebase
         function addSearch(userId, degree_type, program, max_tuition) {
