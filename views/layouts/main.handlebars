@@ -1,80 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <!-- Linking jQuery --> 
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
-        <!-- Linking Materialize Icons -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-        <!-- Linkning personal style sheet -->
-        <link rel="stylesheet" href="css/style.css" type='text/css'>
-
-        {{!-- link to firebase --}}
-        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-
-        <title>NC Colleges</title>
-
-    </head>
-
-    <body>
-        <!-- Nav Bar -->
-        <nav class="nav-extended">
-            <div class="nav-wrapper container">
-              <a href="/" class="brand-logo">North Carolina Higher Education</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/search">New Search</a></li>
-              </ul>
-            </div>
-            <div class="nav-content row">
-              <ul class="tabs tabs-transparent">
-                <li class="tab bluetabs col l4"><a href="/">Home</a></li>
-                <li class="tab bluetabs col l4"><a href="/profile">Profile</a></li>
-                <li class="tab bluetabs col l4"><a href="/signup">Sign Up</a></li>
-              </ul>
-            </div>
-        </nav>
-        
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="/">Home</a></li>
-            <li><a href="/search">New Search</a></li>
-            <li><a href="/profile">Profile</a></li>
-        </ul>
-    
-        <div id="test1" class="col s12"></div>
-        <div id="test2" class="col s12"></div>
-        <div id="test3" class="col s12"></div>
-        
-
-        {{{body}}}
-
-        <footer class="page-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                            </ul>
-                    </div>
-=======
 <html lang="en">
 
 <head>
@@ -152,7 +76,6 @@
                 <div class="input-field col s9">
                     <input id="password" type="password">
                     <label for="password">Password</label>
->>>>>>> master
                 </div>
             </div>
             <div class="row">
@@ -244,13 +167,13 @@
             else {
                 $(this).attr("class", "collection-item");
             }
-        })
+        });
 
         $(document).ready(function() {
             $('.loginBtn').click(function () {
                 $('.modal').modal('close');
             });
-        })
+        });
         
     </script>
 
