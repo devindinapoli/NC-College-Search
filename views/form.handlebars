@@ -1,4 +1,4 @@
-        <div class="container">
+    <div class="container">
     
     <h2 class="center-align">Search North Carolina's Colleges</h2>
     
@@ -109,9 +109,7 @@
         </div>
         
         <div class="row">
-            <a class="btn waves-effect waves-light blue" type="submit" name="action" id="submit">Submit
-            </button></a>
-            <button class="btn waves-effect waves-light" type="submit" name="action" id="guestSubmit">Guest Search
+            <button class="btn waves-effect waves-light blue" type="submit" name="action" id="submit">Submit
             </button>
         </div>
         </form>
@@ -119,9 +117,8 @@
         <div class="row" id="results">
             <div class="container">
                 <h4>{{#if user}}
-                    Hi, {{this.firstname}}, welcome back!
-                {{/if}}
-                </h4>
+                    Hi, {{this.firstname}}, welcome back!                  
+                </h4>{{/if}}
             <div class="collection"></div>
                 {{#each colleges}}
                     <a href="{{this.URL}}" class="collection-item">
