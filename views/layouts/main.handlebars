@@ -208,9 +208,9 @@
                     return;
                 };
                 
-                var auth = firebase.auth();
+                // var auth = firebase.auth();
                 // sign-in
-                var promise = auth.signInWithEmailAndPassword(email, pass);
+                var promise = firebase.auth().signInWithEmailAndPassword(email, pass);
                 // promise.catch(e => console.log(e.message));
                 promise.catch(function(event) {
                     console.log(event.message);
