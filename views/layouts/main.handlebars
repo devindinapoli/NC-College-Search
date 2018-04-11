@@ -1,112 +1,176 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <!-- Linking jQuery --> 
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<head>
+    <meta charset="UTF-8">
+    <!-- Linking jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
-        <!-- Linking Materialize Icons -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-        <!-- Linkning personal style sheet -->
-        <link rel="stylesheet" href="css/style.css" type='text/css'>
+    <!-- Linking Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        {{!-- link to firebase --}}
-        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <!-- Linkning personal style sheet -->
+    <link rel="stylesheet" href="css/style.css" type='text/css'> {{!-- link to firebase --}}
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
-        <title>NC Colleges</title>
+    <title>NC Colleges</title>
 
-    </head>
+</head>
 
-    <body>
-        <!-- Nav Bar -->
-        <nav class="nav-extended">
-            <div class="nav-wrapper container">
-              <a href="/" class="brand-logo">North Carolina Higher Education</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="badges.html">New Search</a></li>
-                <li><a href="/results">Results</a></li>
-              </ul>
+<body>
+    <!-- Nav Bar -->
+    <nav class="nav-extended">
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo">North Carolina Higher Education</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <a href="/search">Search</a>
+                </li>
+                <li>
+                    <a class='modal-trigger' href="#modal1">Login / Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="/search">Search</a>
+        </li>
+        <li>
+            <a href="/results">Login / Sign up</a>
+        </li>
+    </ul>
+
+    <!-- Login Modal -->
+    <div id="modal1" class="modal">
+        <form class="login-form">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <i class="large material-icons">insert_chart</i>
+                    <p class="center login-form-text">Material Design Admin Template</p>
+                </div>
             </div>
-            <div class="nav-content row">
-              <ul class="tabs tabs-transparent">
-                <li class="tab bluetabs col l4"><a href="/profile">Profile</a></li>
-                <li class="tab bluetabs col l4"><a class="active" href="#test2">Compare</a></li>
-                <li class="tab bluetabs col l4"><a href="#test3">Tab 3</a></li>
-              </ul>
+            <div class="row">
+                <div class="col s2">
+                    <i class="medium material-icons">person_outline</i>
+                </div>
+                <div class="input-field col s9">
+                    <input id="username" type="text">
+                    <label for="username" class="center-align">Username</label>
+                </div>
             </div>
-        </nav>
-        
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="badges.html">New Search</a></li>
-            <li><a href="/results">Results</a></li>
-        </ul>
-    
-        <div id="test1" class="col s12"></div>
-        <div id="test2" class="col s12"></div>
-        <div id="test3" class="col s12"></div>
-        
+            <div class="row">
+                <div class="col s2">
+                    <i class="medium material-icons">enhanced_encryption</i>
+                </div>
+                <div class="input-field col s9">
+                    <input id="password" type="password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col s6 offset-s1'>
+                    <label>
+                        <input type="checkbox" id='rememberMe' class="filled-in" checked="checked" />
+                        <span>Remember Me</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <a href="index.html" class="btn waves-effect waves-light loginBtn">Login</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <p class="medium-small">
+                        <a href="page-register.html">Register Now!</a>
+                    </p>
+                </div>
+                <div class="input-field col s6 m6 l6">
+                    <p class="right-align medium-small">
+                        <a href="page-forgot-password.html">Forgot password ?</a>
+                    </p>
+                </div>
+            </div>
 
-        {{{body}}}
+        </form>
 
-        <footer class="page-footer">
+    </div>
+
+
+
+    {{{body}}}
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                            </ul>
-                    </div>
-                </div>
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2014 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
 
-        <script>
-            // This is needed for the collapsed navbar menu to pop open
-            (function($){
-                $(function(){
+    <script>
+        // This is needed for the collapsed navbar menu to pop open
+        (function ($) {
+            $(function () {
 
                 $('.sidenav').sidenav();
                 $('.parallax').parallax();
+                $('.modal').modal();
 
-                }); // end of document ready
-            })(jQuery); // end of jQuery name space
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
 
-            // For selecting colleges on results page
-            $(document).on("click", ".collection-item", function () {
-                if ($(this).attr("class") === "collection-item") {
-                    $(this).attr("class", "collection-item active");
-                }
-                else {
-                    $(this).attr("class", "collection-item");
-                }
-            })
+        // For selecting colleges on results page
+        $(document).on("click", ".collection-item", function () {
+            if ($(this).attr("class") === "collection-item") {
+                $(this).attr("class", "collection-item active");
+            }
+            else {
+                $(this).attr("class", "collection-item");
+            }
+        })
 
-        </script>
+    </script>
 
 
-    </body>
+</body>
 
 </html>
