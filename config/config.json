@@ -6,8 +6,12 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+  "test": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  },
   "production": {
-    "use_env_variable": "DJAWSB_URL",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
