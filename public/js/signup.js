@@ -30,6 +30,7 @@ $(document).ready(function() {
         promise.then(function (event) {
             console.log('new uid: ' + firebase.auth().currentUser.uid);
             writeUserData(firebase.auth().currentUser.uid, firstName, lastName, email, state);
+            // user data is not being sent to firebase when 
             // window.location.replace('/');
         }).catch(function (event) {            
             console.log(event.message)
