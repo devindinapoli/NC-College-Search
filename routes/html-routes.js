@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = function(app) {
     app.get("/", function(req,res) {
-       res.render("index");
+       res.render("index.handlebars");
     })
 
     // app.get("/results", function(req,res) { 
@@ -10,11 +10,11 @@ module.exports = function(app) {
     // })
 
     app.get("/search", function(req,res) { 
-        res.render(path.join("form"));
+        res.render(path.join("form.handlebars"));
     })
 
     app.get("/signup", function(req,res) { 
-        res.render(path.join("signup"));
+        res.render(path.join("signup.handlebars"));
     })
 
 //    app.get("/form", function(req,res) {
@@ -22,7 +22,7 @@ module.exports = function(app) {
 //    })
 
     app.get("/profile", function(req,res) {
-        res.render(path.join("profile"));
+        res.render(path.join("profile.handlebars"));
     })
 
 }
