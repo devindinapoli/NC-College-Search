@@ -17,7 +17,4 @@ module.exports = function(app) {
         res.render(path.join("signup"));
     })
 
-   app.get("/form", function(req,res) {
-       res.render(path.join("form"));
-   })
 }

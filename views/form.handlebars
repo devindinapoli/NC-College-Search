@@ -4,7 +4,7 @@
     
     <h2 class="center-align">Search North Carolina's Colleges</h2>
     
-        <form class="col s12">
+        {{!-- <form class="col s12">
             <div class="row">
             <div class="input-field col s6">
                 <input id="first_name" type="text" class="validate">
@@ -14,12 +14,12 @@
                 <input id="last_name" type="text" class="validate">
                 <label for="last_name">Last Name</label>
             </div>
-            </div>
+            </div> --}}
     
         <div class="row">
             <div class="input-field col s12">
-                <input id="email" type="text" class="validate">
-                <label for="email">Email</label>
+                <input id="city" type="text" class="validate">
+                <label for="city">City</label>
             </div>
         </div>
     
@@ -32,7 +32,7 @@
         </select>
         </div>
     
-        <div class="row">
+        {{!-- <div class="row">
             <label>Home State</label>
             <select class="browser-default" id="state">
                 <option value="" disabled selected>Choose One:</option>
@@ -154,7 +154,7 @@
                 
                 <option value="WY">Wyoming</option>
             </select>
-        </div>
+        </div> --}}
     
         <div class="row">
             <label>Program</label>
@@ -253,6 +253,22 @@
             </button>
         </div>
         </form>
+
+        <div class="row" id="results">
+                <div class="container">
+        <h4>{{#if user}}
+               Hi, {{this.firstname}}, welcome back!
+            {{/if}}
+        </h4>
+        <div class="collection"></div>
+            {{#each colleges}}
+                <a href="{{this.URL}}" class="collection-item">
+                    {{this.name}}, Average Salary: {{this.salary}}, Average Tuition: {{this.tution}}
+                </a>
+            {{/each}}
+        </div>
+    </div>
+        </div>
         
     </div>
 
