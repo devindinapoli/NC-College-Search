@@ -5,9 +5,9 @@ module.exports = function(app) {
        res.render("index");
     })
 
-    app.get("/results", function(req,res) { 
-       res.render(path.join("results"));
-    })
+    // app.get("/results", function(req,res) { 
+    //    res.render(path.join("results"));
+    // })
 
     app.get("/search", function(req,res) { 
         res.render(path.join("form"));
@@ -17,14 +17,12 @@ module.exports = function(app) {
         res.render(path.join("signup"));
     })
 
-<<<<<<< HEAD
-=======
-   app.get("/form", function(req,res) {
-       res.render(path.join("form"));
-   })
+//    app.get("/form", function(req,res) {
+//        res.render(path.join("form"));
+//    })
 
-   app.get("/profile", function(req,res) {
-    res.render(path.join("profile"));
-})
->>>>>>> 922aedb85eac18caed225e4dfd7145fc3a6eab55
+    app.get("/profile", function(req,res) {
+        res.render(path.join("profile"));
+    })
+
 }
