@@ -1,28 +1,10 @@
-{{!-- <h2 class="center-align">Find the Perfect College</h2> --}}
-    
     <div class="container">
     
     <h2 class="center-align">Search North Carolina's Colleges</h2>
+    <p class="center-align">Sign up to keep track of your favorites!</p>
     
         <form class="col s12">
-            <div class="row">
-            <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-            </div>
-            </div>
-    
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="email" type="text" class="validate">
-                <label for="email">Email</label>
-            </div>
-        </div>
-    
+
         <div class="row">
         <label>Degree Type</label>
         <select class="browser-default" id="degree">
@@ -30,130 +12,6 @@
             <option value="2">2 Year Degree (Associates)</option>
             <option value="4">4 Year Degree (Bachelors)</option>
         </select>
-        </div>
-    
-        <div class="row">
-            <label>Home State</label>
-            <select class="browser-default" id="state">
-                <option value="" disabled selected>Choose One:</option>
-                <option value="AL">Alabama</option>
-            
-                <option value="AK">Alaska</option>
-                
-                <option value="AS">American Samoa</option>
-                
-                <option value="AZ">Arizona</option>
-                
-                <option value="AR">Arkansas</option>
-                
-                <option value="CA">California</option>
-                
-                <option value="CO">Colorado</option>
-                
-                <option value="CT">Connecticut</option>
-                
-                <option value="DE">Delaware</option>
-                
-                <option value="DC">District of Columbia</option>
-                
-                <option value="FM">Federated States of Micronesia</option>
-                
-                <option value="FL">Florida</option>
-                
-                <option value="GA">Georgia</option>
-                
-                <option value="GU">Guam</option>
-                
-                <option value="HI">Hawaii</option>
-                
-                <option value="ID">Idaho</option>
-                
-                <option value="IL">Illinois</option>
-                
-                <option value="IN">Indiana</option>
-                
-                <option value="IA">Iowa</option>
-                
-                <option value="KS">Kansas</option>
-                
-                <option value="KY">Kentucky</option>
-                
-                <option value="LA">Louisiana</option>
-                
-                <option value="ME">Maine</option>
-                
-                <option value="MD">Maryland</option>
-                
-                <option value="MA">Massachusetts</option>
-                
-                <option value="MI">Michigan</option>
-                
-                <option value="MN">Minnesota</option>
-                
-                <option value="MS">Mississippi</option>
-                
-                <option value="MO">Missouri</option>
-                
-                <option value="MT">Montana</option>
-                
-                <option value="NE">Nebraska</option>
-                
-                <option value="NV">Nevada</option>
-                
-                <option value="NH">New Hampshire</option>
-                
-                <option value="NJ">New Jersey</option>
-                
-                <option value="NM">New Mexico</option>
-                
-                <option value="NY">New York</option>
-                
-                <option value="NC">North Carolina</option>
-                
-                <option value="ND">North Dakota</option>
-                
-                <option value="MH"> Marshall Islands</option>
-                
-                <option value="MP">Northern Mariana Islands</option>
-                
-                <option value="OH">Ohio</option>
-                
-                <option value="OK">Oklahoma</option>
-                
-                <option value="OR">Oregon</option>
-                
-                <option value="PW">Palau</option>
-                
-                <option value="PA">Pennsylvania</option>
-                
-                <option value="PR">Puerto Rico</option>
-                
-                <option value="RI">Rhode Island</option>
-                
-                <option value="SC">South Carolina</option>
-                
-                <option value="SD">South Dakota</option>
-                
-                <option value="TN">Tennessee</option>
-                
-                <option value="TX">Texas</option>
-                
-                <option value="UT">Utah</option>
-                
-                <option value="VT">Vermont</option>
-                
-                <option value="VI">Virgin Islands</option>
-                
-                <option value="VA">Virginia</option>
-                
-                <option value="WA">Washington</option>
-                
-                <option value="WV">West Virginia</option>
-                
-                <option value="WI">Wisconsin</option>
-                
-                <option value="WY">Wyoming</option>
-            </select>
         </div>
     
         <div class="row">
@@ -246,13 +104,52 @@
             </div>
         </div>
         
+        <br>
         <div class="row">
-            <a class="btn waves-effect waves-light blue" href="/results" type="submit" name="action" id="submit">Submit
-            </button></a>
-            <button class="btn waves-effect waves-light" type="submit" name="action" id="guestSubmit">Guest Search
+            <button class="btn waves-effect waves-light blue" type="submit" name="action" id="submit">Submit
             </button>
         </div>
+        <br>
         </form>
+        <br>
+
+        <!-- results handlebars -->
+
+        <div class="row" id="results">
+            <div class="container">
+                <h4>{{#if user}}
+                    Hi, {{this.firstname}}, welcome back!                  
+                </h4>{{/if}}
+            <div class="collection"></div>
+                {{#each colleges}}
+                    <a href="{{this.URL}}" class="collection-item">
+                        {{this.name}}, Average Salary: {{this.salary}}, Average Tuition: {{this.tution}}
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+        </div>
+        
+    </div>
+
+    <!-- Stuff that goes in results page -->
+    {{!-- <div class="container results-field">
+        <div class="collection">
+            <a href="#!" class="collection-item">College 1 goes here</a>
+            <a href="#!" class="collection-item active">College 2</a>
+            <a href="#!" class="collection-item">College 3</a>
+            <a href="#!" class="collection-item">College 4</a>
+            <a href="#!" class="collection-item">College 5</a>
+            <a href="#!" class="collection-item">College 6</a>
+            <a href="#!" class="collection-item">College 7</a>
+            <a href="#!" class="collection-item">College 8</a>
+            <a href="#!" class="collection-item">College 9</a>
+            <a href="#!" class="collection-item">College 10</a>
+        </div>
+    </div> --}}
+        
+
+<!-- End Results page -->
         
     </div>
 
