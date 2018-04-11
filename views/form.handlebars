@@ -151,9 +151,7 @@
             $('.results-field').show();
             $('.results-field').empty();
 
-            // added event.preventDefault(); to test sending searches to firebase
-            // the userInput object and $.post causing errors and breaking page before running firebase code
-            //event.preventDefault();
+            // the addSearch() and $.post causing errors and breaking page before running firebase code
 
             var userInput = {
                 degree_type: $("#degree option:checked").val(),
@@ -207,7 +205,7 @@
                 max_tuition: max_tuition
                 };
             firebase.database().ref('users/' + userId).child('searches').push(searchObject);
-            console.log(searchObject);
+            console.log('Search object sent to firebase: ' + searchObject);
         };
 
     })

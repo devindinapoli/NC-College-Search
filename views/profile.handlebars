@@ -3,12 +3,17 @@
 <div class="container profile">
     {{!-- Photo and Name --}}
     <div class="row">
+        <button class="btn waves-effect waves-light blue" type="submit" name="action" id="history">View Profile
+        </button>
+    </div>
+
+    <div class="row">
         <img src="images/man.jpeg" style='width:400px;height:300px;' alt="User Photo" id='userPhoto'>
         <br>
         <h3 id='firstName'>Name</h3>
         <h3 id='lastName'>Here</h3>
     </div>
-
+    
     <div class="row">
 
     </div>
@@ -19,7 +24,6 @@
         <table>
             <thead>
                 <tr>
-                    <th>City</th>
                     <th>Degree</th>
                     <th>Program</th>
                     <th>Tuition</th>
@@ -53,36 +57,42 @@
 // Link to firebase js file for profile
 
 $(document).ready(function(){
-        
-    // console.log('current user: ' + firebase.auth().currentUser.uid);
-    // displaySearches(firebase.auth().currentUser.uid);
 
-    function displaySearches(userId) {
+    // Button added to execute firebase calls
+    $("#history").on("click", function(event){
+        displaySearches();
+        displayUser();
+    });        
+
+    // displays first name and last name
+    function displayUser() {
+        var userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref('users/' + userId).once('value', function(snap) {
+            var first = snap.val().firstName;
+            var last = snap.val().lastName;
+            $('#firstName').text(first);
+            $('#lastName').text(last);
+        })
+    }
+
+    // displays last 5 search criteria from form
+    function displaySearches() {
+        var userId = firebase.auth().currentUser.uid;
+
         firebase.database().ref('users/' + userId).child('searches').limitToLast(5).on('child_added', function(snap) {    
             var count = $('#searched tr').length;
-            if (count > 5) {
+            if (count > 4) {
                 $('#searched tr:last').remove();
             }
             $('#searched').prepend('<tr class="trow"><td> ' +
-                city + '</td><td> ' +
                 snap.val().degree_type + ' </td><td> ' +
                 snap.val().program + ' </td><td> ' +
                 snap.val().max_tuition + ' </td></tr>');
             }, function(errorObject) {
             console.log('The read failed: ' + errorObject.code);
         });
-    };
-
-    // add realtime listener to check if a user is logged in
-    // remove this listener from submit page when login is available on main page
-    //firebase.auth().onAuthStateChanged(function (firebaseUser) {
-    //    if(firebaseUser) {
-    //        console.log(firebase.auth().currentUser.email + ' is currently logged in.');
-    //        displaySearches(firebase.auth().currentUser.uid);
-    //    } else {
-    //        console.log('Not logged in.');
-    //    };
-    //}); 
+    }; 
 
 });
 
