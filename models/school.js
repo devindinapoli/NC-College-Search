@@ -14,6 +14,9 @@ module.exports = function(sequelize,DataTypes) {
         },
         in_state: {
             type: DataTypes.INTEGER
+        },
+        degree_type: {
+            type: DataTypes.STRING
         }
     }, {
         timestamps: false
