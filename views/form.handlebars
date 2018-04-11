@@ -1,20 +1,16 @@
-        <div class="container">
+    <div class="container">
     
     <h2 class="center-align">Search North Carolina's Colleges</h2>
+    <p class="center-align">Sign up to keep track of your favorites!</p>
     
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="city" type="text" class="validate">
-                <label for="city">City</label>
-            </div>
-        </div>
-    
+        <form class="col s12">
+
         <div class="row">
         <label>Degree Type</label>
         <select class="browser-default" id="degree">
             <option value="" disabled selected>Choose One:</option>
-            <option value="1">2 Year Degree (Associates)</option>
-            <option value="2">4 Year Degree (Bachelors)</option>
+            <option value="2">2 Year Degree (Associates)</option>
+            <option value="4">4 Year Degree (Bachelors)</option>
         </select>
         </div>
     
@@ -108,20 +104,22 @@
             </div>
         </div>
         
+        <br>
         <div class="row">
-            <a class="btn waves-effect waves-light blue" type="submit" name="action" id="submit">Submit
-            </button></a>
-            <button class="btn waves-effect waves-light" type="submit" name="action" id="guestSubmit">Guest Search
+            <button class="btn waves-effect waves-light blue" type="submit" name="action" id="submit">Submit
             </button>
         </div>
+        <br>
         </form>
+        <br>
+
+        <!-- results handlebars -->
 
         <div class="row" id="results">
             <div class="container">
                 <h4>{{#if user}}
-                    Hi, {{this.firstname}}, welcome back!
-                {{/if}}
-                </h4>
+                    Hi, {{this.firstname}}, welcome back!                  
+                </h4>{{/if}}
             <div class="collection"></div>
                 {{#each colleges}}
                     <a href="{{this.URL}}" class="collection-item">
@@ -135,7 +133,7 @@
     </div>
 
     <!-- Stuff that goes in results page -->
-    <div class="container results-field">
+    {{!-- <div class="container results-field">
         <div class="collection">
             <a href="#!" class="collection-item">College 1 goes here</a>
             <a href="#!" class="collection-item active">College 2</a>
@@ -148,39 +146,27 @@
             <a href="#!" class="collection-item">College 9</a>
             <a href="#!" class="collection-item">College 10</a>
         </div>
-    </div>
+    </div> --}}
         
 
 <!-- End Results page -->
+        
+    </div>
 
     <script type="text/javascript">
 
     $(document).ready(function(){
-        $('.results-field').hide();
-
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
-            authDomain: "college-finder-738c6.firebaseapp.com",
-            databaseURL: "https://college-finder-738c6.firebaseio.com",
-            projectId: "college-finder-738c6",
-            storageBucket: "college-finder-738c6.appspot.com",
-            messagingSenderId: "1076388845287"
-        };
-
-        firebase.initializeApp(config);
-
+        
         $("#submit").on("click", function(event){
+            $('.results-field').show();
+
             // added event.preventDefault(); to test sending searches to firebase
             // the userInput object and $.post causing errors and breaking page before running firebase code
-            // event.preventDefault();
+            //event.preventDefault();
 
             var userInput = {
-                first_name: $("#first_name").val().trim(),
-                last_name: $("#last_name").val().trim(),
-                email: $("#email").val().trim(),
                 degree_type: $("#degree option:checked").val(),
-                home_state: $("#state option:checked").val(),
+                city: $("#city option:checked").val(),
                 program: $("#program option:checked").val(),
                 max_tuition: $("#price").val().trim() 
             };
@@ -188,6 +174,7 @@
             var degree_type = $('#degree option:checked').text();
             var program = $('#program option:checked').text();
             var max_tuition = $('#price').val().trim();
+
 
             function validateForm() {
             var isValid = true;
@@ -205,20 +192,15 @@
             // send user data to firebase
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
-            $.post("/api/students", userInput);
-            console.log('userInput = ' + JSON.stringify(userInput));
+            $.get("/api/schools", function(data){
+                for(var i = 0; i < data.length; i++) {
+                    if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
+                        console.log(data[i]);
+                    }
+                }
+            })
 
-        })
-
-        // add realtime listener to check if a user is logged in
-        // remove this listener from submit page when login is available on main page
-        firebase.auth().onAuthStateChanged(function (firebaseUser) {
-            if(firebaseUser) {
-                console.log(firebase.auth().currentUser.email + ' is currently logged in.');
-            } else {
-                console.log('Not logged in.');
-            };
-        });    
+        })         
    
         // function that adds new user search to firebase
         function addSearch(userId, degree_type, program, max_tuition) {
@@ -230,8 +212,6 @@
             firebase.database().ref('users/' + userId).child('searches').push(searchObject);
             console.log(searchObject);
         };
-
-        
 
     })
    </script>

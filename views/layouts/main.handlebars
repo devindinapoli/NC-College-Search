@@ -19,13 +19,14 @@
     <link rel="stylesheet" href="css/style.css" type='text/css'> {{!-- link to firebase --}}
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
+    <link rel="shortcut icon" href="../../images/schoolicon.png" />    
     <title>NC Colleges</title>
 
 </head>
 
 <body>
     <!-- Nav Bar -->
-    <nav class="nav-extended">
+    <nav class="nav-extended hoverable">
         <div class="nav-wrapper container">
             <a href="/" class="brand-logo">North Carolina Higher Education</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -65,8 +66,8 @@
                     <i class="medium material-icons">person_outline</i>
                 </div>
                 <div class="input-field col s9">
-                    <input id="username" type="text">
-                    <label for="username" class="center-align">Username</label>
+                    <input id="modal-email" type="text">
+                    <label for="modal-email" class="center-align">Email</label>
                 </div>
             </div>
             <div class="row">
@@ -74,8 +75,12 @@
                     <i class="medium material-icons">enhanced_encryption</i>
                 </div>
                 <div class="input-field col s9">
-                    <input id="password" type="password">
-                    <label for="password">Password</label>
+
+
+                    <input id="modal-password" type="password">
+                    <label for="modal-password">Password</label>
+
+
                 </div>
             </div>
             <div class="row">
@@ -89,7 +94,7 @@
             <div class="row">
                 <div class="input-field col s12 center-align">
                     <a href="#" class="btn waves-effect waves-light loginBtn">Login</a>
-                    <a href="#" class="btn waves-effect waves-light loginBtn">Logout</a>
+                    <a href="#" class="btn waves-effect waves-light logoutBtn">Logout</a>
                 </div>
             </div>
             <div class="row">
@@ -113,27 +118,23 @@
 
     {{{body}}}
 
-    <footer class="page-footer">
+    <footer class="page-footer blue">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <p class="grey-text text-lighten-4">North Carolina college finder is rigorously trademarked and copyrighted.</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
+                    <h5 class="white-text" href="/">Home</h5>
                     <ul>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                            <a class="grey-text text-lighten-3" href="#!">Log out</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                            <a class="modal-trigger grey-text text-lighten-3" href="#modal1">Login / Sign up</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                            <a class="grey-text text-lighten-3" href="https://www.visitnc.com/">Visit NC</a>
                         </li>
                     </ul>
                 </div>
@@ -141,8 +142,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                © 1977 Copyright
             </div>
         </div>
     </footer>
@@ -170,9 +170,66 @@
         });
 
         $(document).ready(function() {
-            $('.loginBtn').click(function () {
-                $('.modal').modal('close');
+
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
+                authDomain: "college-finder-738c6.firebaseapp.com",
+                databaseURL: "https://college-finder-738c6.firebaseio.com",
+                projectId: "college-finder-738c6",
+                storageBucket: "college-finder-738c6.appspot.com",
+                messagingSenderId: "1076388845287"
+            };
+            firebase.initializeApp(config);
+
+            // log-out button
+            $('.logoutBtn').on('click', function (event) {
+                firebase.auth().signOut();
+                console.log('logout');
             });
+
+            // Add log-in event
+            $('.loginBtn').on('click', function(event) {
+                // get email and pass
+                var email = $('#modal-email').val().trim();
+                var pass = $('#modal-password').val().trim();
+
+                // validate email and password aren't blank
+                function validateForm() {
+                    var isValid = true;
+                    if (email === '' || pass === '') {
+                        // alert user to fill out txt inputs with alert div
+                        alert('Email and Password must be filled out');
+                        isValid = false;
+                    }
+                    return isValid;
+                };
+                if(!validateForm()) {
+                    return;
+                };
+                
+                var auth = firebase.auth();
+                // sign-in
+                var promise = auth.signInWithEmailAndPassword(email, pass);
+                // promise.catch(e => console.log(e.message));
+                promise.catch(function(event) {
+                    console.log(event.message);
+                });
+
+                // add realtime listener to check if a user is logged in
+                // remove this listener from submit page when login is available on main page
+                firebase.auth().onAuthStateChanged(function (firebaseUser) {
+                    if(firebaseUser) {
+                        console.log(firebase.auth().currentUser.email + ' is currently logged in.');
+                        $('.modal').modal('close');
+                    } else {
+                        console.log('Not logged in.');
+                        $('.modal').modal('close');
+                    };
+                }); 
+                
+            });                   
+            
         });
         
     </script>
