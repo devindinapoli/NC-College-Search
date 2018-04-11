@@ -27,8 +27,8 @@
         <label>Degree Type</label>
         <select class="browser-default" id="degree">
             <option value="" disabled selected>Choose One:</option>
-            <option value="1">2 Year Degree (Associates)</option>
-            <option value="2">4 Year Degree (Bachelors)</option>
+            <option value="2">2 Year Degree (Associates)</option>
+            <option value="4">4 Year Degree (Bachelors)</option>
         </select>
         </div>
     
@@ -272,16 +272,15 @@
         firebase.initializeApp(config);
 
         $("#submit").on("click", function(event){
+            $('.results-field').show();
+
             // added event.preventDefault(); to test sending searches to firebase
             // the userInput object and $.post causing errors and breaking page before running firebase code
             //event.preventDefault();
 
             var userInput = {
-                first_name: $("#first_name").val().trim(),
-                last_name: $("#last_name").val().trim(),
-                email: $("#email").val().trim(),
                 degree_type: $("#degree option:checked").val(),
-                home_state: $("#state option:checked").val(),
+                city: $("#city option:checked").val(),
                 program: $("#program option:checked").val(),
                 max_tuition: $("#price").val().trim() 
             };
@@ -289,6 +288,7 @@
             var degree_type = $('#degree option:checked').text();
             var program = $('#program option:checked').text();
             var max_tuition = $('#price').val().trim();
+
 
             function validateForm() {
             var isValid = true;
@@ -306,8 +306,15 @@
             // send user data to firebase
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
-            $.post("/api/students", userInput);
-            console.log('userInput = ' + JSON.stringify(userInput));
+
+            $.get("/api/schools", function(data){
+                for(var i = 0; i < data.length; i++) {
+                    if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
+                        console.log(data[i]);
+                    }
+                }
+            })
+
 
         })
 
