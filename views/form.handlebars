@@ -256,9 +256,30 @@
         
     </div>
 
+    <!-- Stuff that goes in results page -->
+    <div class="container results-field">
+        <div class="collection">
+            <a href="#!" class="collection-item">College 1 goes here</a>
+            <a href="#!" class="collection-item active">College 2</a>
+            <a href="#!" class="collection-item">College 3</a>
+            <a href="#!" class="collection-item">College 4</a>
+            <a href="#!" class="collection-item">College 5</a>
+            <a href="#!" class="collection-item">College 6</a>
+            <a href="#!" class="collection-item">College 7</a>
+            <a href="#!" class="collection-item">College 8</a>
+            <a href="#!" class="collection-item">College 9</a>
+            <a href="#!" class="collection-item">College 10</a>
+        </div>
+    </div>
+        
+
+<!-- End Results page -->
+
     <script type="text/javascript">
 
     $(document).ready(function(){
+        $('.results-field').hide();
+
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
@@ -331,6 +352,8 @@
             firebase.database().ref('users/' + userId).child('searches').push(searchObject);
             console.log(searchObject);
         };
+
+        
 
     })
    </script>

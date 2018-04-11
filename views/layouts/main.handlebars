@@ -47,12 +47,12 @@
             <a href="/search">Search</a>
         </li>
         <li>
-            <a href="/results">Login / Sign up</a>
+            <a class='modal-trigger' href="#modal1">Login / Sign up</a>
         </li>
     </ul>
 
     <!-- Login Modal -->
-    <div id="modal1" class="modal">
+    <div id="modal1" class="modal fade">
         <form class="login-form">
             <div class="row">
                 <div class="input-field col s12 center">
@@ -88,13 +88,14 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 center-align">
-                    <a href="index.html" class="btn waves-effect waves-light loginBtn">Login</a>
+                    <a href="#" class="btn waves-effect waves-light loginBtn">Login</a>
+                    <a href="#" class="btn waves-effect waves-light loginBtn">Logout</a>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
                     <p class="medium-small">
-                        <a href="page-register.html">Register Now!</a>
+                        <a href="/signup">Register Now!</a>
                     </p>
                 </div>
                 <div class="input-field col s6 m6 l6">
@@ -168,6 +169,12 @@
             }
         })
 
+        $(document).ready(function() {
+            $('.loginBtn').click(function () {
+                $('.modal').modal('close');
+            });
+        })
+        
     </script>
 
 
