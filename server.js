@@ -25,7 +25,6 @@ require("./routes/html-routes.js")(app);
 
 var db = require("./models");
 
-db.sequelize.sync().then(function(){
-  app.listen(process.env.PORT || 8080)
-  }); 
+app.listen(process.env.PORT || 8080)
+
 
