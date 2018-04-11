@@ -5,9 +5,9 @@ module.exports = function(app) {
        res.render("index");
     })
 
-    app.get("/results", function(req,res) { 
-       res.render(path.join("results"));
-    })
+    // app.get("/results", function(req,res) { 
+    //    res.render(path.join("results"));
+    // })
 
     app.get("/search", function(req,res) { 
         res.render(path.join("form"));
@@ -17,11 +17,12 @@ module.exports = function(app) {
         res.render(path.join("signup"));
     })
 
-   app.get("/form", function(req,res) {
-       res.render(path.join("form"));
-   })
+//    app.get("/form", function(req,res) {
+//        res.render(path.join("form"));
+//    })
 
-   app.get("/profile", function(req,res) {
-    res.render(path.join("profile"));
-})
+    app.get("/profile", function(req,res) {
+        res.render(path.join("profile"));
+    })
+
 }
