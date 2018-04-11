@@ -75,14 +75,14 @@ $(document).ready(function(){
 
     // add realtime listener to check if a user is logged in
     // remove this listener from submit page when login is available on main page
-    firebase.auth().onAuthStateChanged(function (firebaseUser) {
-        if(firebaseUser) {
-            console.log(firebase.auth().currentUser.email + ' is currently logged in.');
-            displaySearches(firebase.auth().currentUser.uid);
-        } else {
-            console.log('Not logged in.');
-        };
-    }); 
+    //firebase.auth().onAuthStateChanged(function (firebaseUser) {
+    //    if(firebaseUser) {
+    //        console.log(firebase.auth().currentUser.email + ' is currently logged in.');
+    //        displaySearches(firebase.auth().currentUser.uid);
+    //    } else {
+    //        console.log('Not logged in.');
+    //    };
+    //}); 
 
 });
 

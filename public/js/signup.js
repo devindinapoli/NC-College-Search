@@ -1,16 +1,5 @@
 $(document).ready(function() {
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
-        authDomain: "college-finder-738c6.firebaseapp.com",
-        databaseURL: "https://college-finder-738c6.firebaseio.com",
-        projectId: "college-finder-738c6",
-        storageBucket: "college-finder-738c6.appspot.com",
-        messagingSenderId: "1076388845287"
-    };
-
-    firebase.initializeApp(config);    
-
+    
     // Add sign-in event
     $('#btnSignUp').on('click', function(event) {
         event.preventDefault();
@@ -41,6 +30,7 @@ $(document).ready(function() {
         promise.then(function (event) {
             console.log('new uid: ' + firebase.auth().currentUser.uid);
             writeUserData(firebase.auth().currentUser.uid, firstName, lastName, email, state);
+            // window.location.replace('/');
         }).catch(function (event) {            
             console.log(event.message)
         });      
@@ -54,16 +44,6 @@ $(document).ready(function() {
         event.preventDefault();
         firebase.auth().signOut();
         console.log('logout');
-    });
-
-    // add realtime listener
-    // remove this listener from submit page when login is available on main page
-    firebase.auth().onAuthStateChanged(function (firebaseUser) {
-        if(firebaseUser) {
-            console.log(firebase.auth().currentUser.email + ' is currently logged in.');
-        } else {
-            console.log('Not logged in.');
-        };
     });
 
     // save the user's profile into Firebase so we can list users,

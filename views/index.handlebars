@@ -10,6 +10,7 @@
     <div class="section">
         <div class="row">
             <div class="row topColleges">
+                <h4>Top Colleges In NC</h4>
                 {{!-- dynamically generated colleg cards go here --}}
             </div>
             <div class="icon-block">
@@ -113,16 +114,15 @@
 
 <script>
     $(document).ready(function () {
-        var name = ['UNC', 'DUKE', 'NCSU', 'DAVIDSON', 'UNCSA', 'WAKE FOREST'];
-        var source = ['/images/UNC.jpg', "/images/DUKE.png", "/images/NCState.png", "/images/Davidson.jpg", "/images/UNCSA.jpg", "/images/WF.jpg"];
-        var website = ["https://www.unc.edu/", "https://www.duke.edu/", "https://www.ncsu.edu/", "https://www.davidson.edu/", "https://www.uncsa.edu/", "https://www.wfu.edu/"];
-        var gradRate = ['91%', '95%', '77%', '95%', '62%', '88%'];
+        var name = ['UNC', 'DUKE', 'NCSU', 'DAVIDSON', 'UNCSA', 'WAKE', 'APP', 'GCD'];
+        var source = ['/images/UNC.jpg', "/images/DUKE.png", "/images/NCState.png", "/images/Davidson.jpg", "/images/UNCSA.jpg", "/images/WF.jpg", '/images/app.png', '/images/grace.jpeg'];
+        var website = ["https://www.unc.edu/", "https://www.duke.edu/", "https://www.ncsu.edu/", "https://www.davidson.edu/", "https://www.uncsa.edu/", "https://www.wfu.edu/", "https://www.appstate.edu/", "https://www.gcd.edu/"];
+        var gradRate = ['91%', '95%', '77%', '95%', '62%', '88%', '73%', '56%'];
         var cost = [];
-        
-        for (var i = 0; i < 6; i++) {
-            $('.topColleges').append(
 
-                "<div class='col l4 s6'> <div class='card'> <div class='card-image waves-effect waves-block waves-light'> <img class='activator' src=" + source[i] + '>' +
+        for (var i = 0; i < 8; i++) {
+            $('.topColleges').append(
+                "<div class='col l3 m4 s6'> <div class='card'> <div class='card-image waves-effect waves-block waves-light'> <img class='activator' src=" + source[i] + '>' +
                 '</div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + name[i] +
                 '<i class="material-icons right">more_vert</i></span><p><a href=' + website[i] +
                 '>More Info</a></p></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">' + name[i] +
@@ -131,8 +131,6 @@
                 '</p></p></div></div></div>'
             );
         }
-
     });
-
 </script>
 <!-- End index.handlebars -->
