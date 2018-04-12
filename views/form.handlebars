@@ -150,6 +150,7 @@
         $("#submit").on("click", function(event){
             $('.results-field').show();
             $('.results-field').empty();
+            event.preventDefault();
 
             // the addSearch() and $.post causing errors and breaking page before running firebase code
 
