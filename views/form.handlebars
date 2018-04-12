@@ -180,8 +180,6 @@
 
             $.post("/api/students", userInput);
 
-            var db = require("../models");
-
             $.get("/api/schools", function(data){
                 console.log(data);
                 for(var i = 0; i < data.length; i++) {
