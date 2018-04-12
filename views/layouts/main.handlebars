@@ -17,6 +17,7 @@
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
     <!-- Linkning personal style sheet -->
     <link rel="stylesheet" href="css/style.css" type='text/css'> {{!-- link to firebase --}}
@@ -37,27 +38,33 @@
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down header-font">
                 <li>
-                    <a href="/search">Search</a>
+                    <a href="/search" class="content-font">Search</a>
                 </li>
                 <li>
-                    <a class='modal-trigger' href="#modal1">Login / Sign up</a>
+                    <a class='modal-trigger login content-font' href="#modal1">Login / Sign up</a>
                 </li>
                 <li>
-                    <a href="/profile"><i class="material-icons">account_circle</i></a>
+                    <a href="/profile"><i class="material-icons profile-icon">account_circle</i></a>
+                </li>
+                <li>
+                    <a href="#" class="logoutBtn content-font">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo header-font">
+    <ul class="sidenav" id="mobile-demo">
         <li>
-            <a href="/search">Search</a>
+            <a href="/search" class="content-font">Search</a>
         </li>
         <li>
-            <a class='modal-trigger' href="#modal1">Login / Sign up</a>
+            <a class='modal-trigger login content-font' href="#modal1">Login / Sign up</a>
         </li>
         <li>
-            <a href="/profile">Profile</a>
+            <a href="/profile" class='profile content-font'>Profile</a>
+        </li>
+        <li>
+            <a href="#" class="logoutBtn content-font">Logout</a>
         </li>
     </ul>
 
@@ -95,32 +102,17 @@
             </div>
 
             <div class="row">
-                <div class='col s6 offset-s1'>
-                    <label>
-                        <input type="checkbox" id='rememberMe' class="filled-in" checked="checked" />
-                        <span>Remember Me</span>
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 center-align">
+                <div class="input-field col s12 center-align content-font">
                     <a href="#" class="btn waves-effect waves-light loginBtn">Login</a>
-                    <a href="#" class="btn waves-effect waves-light logoutBtn">Logout</a>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
-                    <p class="medium-small">
+                    <p class="medium content-font">
                         <a href="/signup">Register Now!</a>
                     </p>
                 </div>
-                <div class="input-field col s6 m6 l6">
-                    <p class="right-align medium-small">
-                        <a href="page-forgot-password.html">Forgot password?</a>
-                    </p>
-                </div>
             </div>
-
         </form>
 
     </div>
@@ -133,19 +125,21 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <p class="grey-text text-lighten-4">North Carolina college finder is rigorously trademarked and copyrighted.</p>
+                    <p class="grey-text text-lighten-4 content-font">North Carolina College Finder is rigorously trademarked and copyrighted.</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text" href="/">Home</h5>
                     <ul>
                         <li>
-                            <a class="grey-text text-lighten-3" href="/profile">Profile</a>
+                            <a class="grey-text text-lighten-3 content-font hoverable" href="/">Home</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Log out</a>
+                            <a class="grey-text text-lighten-3 content-font hoverable" href="/profile">Profile</a>
                         </li>
                         <li>
-                            <a class="modal-trigger grey-text text-lighten-3" href="#modal1">Login / Sign up</a>
+                            <a class="grey-text text-lighten-3 content-font hoverable" href="#!">Log out</a>
+                        </li>
+                        <li>
+                            <a class="modal-trigger grey-text text-lighten-3 content-font hoverable" href="#modal1">Login / Sign up</a>
                         </li>
                     </ul>
                 </div>

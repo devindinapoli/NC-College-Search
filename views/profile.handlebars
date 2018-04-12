@@ -9,8 +9,8 @@
     <div class="row">
         <img src="images/man1.png" style='width:200px;height:200px;' alt="User Photo" id='userPhoto'>
         <br>
-        <h3 id='firstName'>Name</h3>
-        <h3 id='lastName'>Here</h3>
+        <h3 id='firstName' class="header-font">Name</h3>
+        <h3 id='lastName' class="header-font">Here</h3>
     </div>
     
     <div class="row">
@@ -23,9 +23,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Degree</th>
-                    <th>Program</th>
-                    <th>Tuition</th>
+                    <th class="content-font">Degree</th>
+                    <th class="content-font">Program</th>
+                    <th class="content-font">Tuition</th>
                 </tr>
             </thead>
 
@@ -115,9 +115,9 @@ $(document).ready(function(){
             if (count > 4) {
                 $('#searched tr:last').remove();
             }
-            $('#searched').prepend('<tr class="trow"><td> ' +
-                snap.val().degree_type + ' </td><td> ' +
-                snap.val().program + ' </td><td> ' +
+            $('#searched').prepend('<tr class="trow"><td class="content-font"> ' +
+                snap.val().degree_type + ' </td><td class="content-font"> ' +
+                snap.val().program + ' </td><td class="content-font"> ' +
                 snap.val().max_tuition + ' </td></tr>');
             }, function(errorObject) {
             console.log('The read failed: ' + errorObject.code);
