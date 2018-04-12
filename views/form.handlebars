@@ -153,7 +153,6 @@
 
             var userInput = {
                 degree_type: $("#degree option:checked").val(),
-                city: $("#city option:checked").val(),
                 program: $("#program option:checked").val(),
                 max_tuition: $("#price").val().trim() 
             };
@@ -178,6 +177,9 @@
 
             // send user data to firebase
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
+
+            $.post("/api/students", userInput);
+
 
             $.get("/api/schools", function(data){
                 console.log(data);
