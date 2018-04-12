@@ -23,3 +23,13 @@ li {
     overflow: auto;
     z-index: 10;
 }
+
+.header-font {
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+@media only screen and (max-width: 995px) {
+    nav .brand-logo {
+        font-size: 20px;
+    }
+}
