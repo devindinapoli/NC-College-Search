@@ -208,7 +208,6 @@
                     return;
                 };
                 
-                // var auth = firebase.auth();
                 // sign-in
                 var promise = firebase.auth().signInWithEmailAndPassword(email, pass);
                 // promise.catch(e => console.log(e.message));
@@ -216,20 +215,18 @@
                     console.log(event.message);
                 });
 
-                // add realtime listener to check if a user is logged in
-                // remove this listener from submit page when login is available on main page
-                firebase.auth().onAuthStateChanged(function (firebaseUser) {
-                    if(firebaseUser) {
-                        console.log(firebase.auth().currentUser.email + ' is currently logged in.');
-                        $('.modal').modal('close');
-                    } else {
-                        console.log('Not logged in.');
-                        $('.modal').modal('close');
-                    };
-                }); 
                 
             });                   
             
+            // add realtime listener to check if a user is logged in
+            firebase.auth().onAuthStateChanged(function (firebaseUser) {
+                if(firebaseUser) {
+                    console.log(firebase.auth().currentUser.email + ' is currently logged in.');
+                } else {
+                    console.log('Not logged in.');
+                };
+                $('.modal').modal('close');
+            }); 
         });
         
     </script>

@@ -148,10 +148,9 @@
     $(document).ready(function(){
         
         $("#submit").on("click", function(event){
+            event.preventDefault();
             $('.results-field').show();
-            $('.results-field').empty();
-
-            // the addSearch() and $.post causing errors and breaking page before running firebase code
+            $('.results-field').empty();            
 
             var userInput = {
                 degree_type: $("#degree option:checked").val(),
@@ -163,7 +162,6 @@
             var degree_type = $('#degree option:checked').text();
             var program = $('#program option:checked').text();
             var max_tuition = $('#price').val().trim();
-
 
             function validateForm() {
             var isValid = true;
@@ -179,6 +177,7 @@
             };
 
             // send user data to firebase
+            // the addSearch() and $.post causing errors and breaking page before running firebase code
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
             $.get("/api/schools", function(data){
