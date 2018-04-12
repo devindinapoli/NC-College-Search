@@ -181,7 +181,9 @@
             $.post("/api/students", userInput);
 
             var db = require("../models");
-
+            
+            $.get("/api/schools", function(req,res){
+              
             //$.get("/api/schools", function(){
                 //console.log(data);
                 //for(var i = 0; i < data.length; i++) {
