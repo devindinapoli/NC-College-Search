@@ -43,7 +43,7 @@
                     <a class='modal-trigger login' href="#modal1">Login / Sign up</a>
                 </li>
                 <li class='image-div'>
-                    <img class="img-circle" src="/images/man1.png">
+                    <img id="img-circle" src="/images/man1.png">
                 </li>
                 <li>
                     <a href="#" class="logoutBtn">Logout</a>
@@ -231,9 +231,20 @@
                 if(firebaseUser) {
                     console.log(firebase.auth().currentUser.email + ' is currently logged in.');
                     $('.logoutBtn').show();
+                    $('.login').hide();
+                    firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid).getDownloadURL().then(function(url) {
+                    console.log(url);
+                
+                    // insert url into image src
+                    var img = document.getElementById('img-circle');
+                    img.src = url;
+                    }).catch(function(error) {
+                    // Handle any errors
+                });
                 } else {
                     console.log('Not logged in.');
                     $('.logoutBtn').hide();
+                    $('.login').show();
                 };
                 $('.modal').modal('close');
             }); 
