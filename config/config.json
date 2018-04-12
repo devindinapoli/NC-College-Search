@@ -1,10 +1,12 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "root",
     "database": "nc_schools",
     "host": "127.0.0.1",
+    "port": "8889",
     "dialect": "mysql"
+    
   },
   "test": {
     "use_env_variable": "JAWSDB_URL",
