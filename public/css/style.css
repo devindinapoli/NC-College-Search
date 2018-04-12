@@ -8,22 +8,13 @@ body {
 main {
     flex: 1 0 auto;
 }
-/* Nav Bar style */
-nav {
-    background: skyblue;
-}
 
-.bluetabs {
-    background: steelblue;
+li {
+    font-size: 16pt;
 }
-
 
 .material-icons {
     color: steelblue;
-}
-
-#rememberMe [type=checkbox]:checked {
-    background: steelblue;
 }
 
 .parallax-container {
@@ -34,4 +25,5 @@ nav {
     height: 400px;
     overflow: scroll;
 }
+
 
