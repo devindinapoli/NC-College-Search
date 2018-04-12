@@ -98,7 +98,6 @@
 
             var userInput = {
                 degree_type: $("#degree option:checked").val(),
-                city: $("#city option:checked").val(),
                 program: $("#program option:checked").val(),
                 max_tuition: $("#price").val().trim() 
             };
@@ -124,10 +123,13 @@
             // send user data to firebase
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
+            $.post("/api/students", userInput);
+
+
             $.get("/api/schools", function(data){
                 console.log(data);
                 for(var i = 0; i < data.length; i++) {
-                    //if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
+                    if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
                         var schoolSection = $("<div>");
                         schoolSection.addClass("school");
                         schoolSection.attr("id","school-well-" + data[i].id);
@@ -136,7 +138,7 @@
                         $("#school-well-" + data[i].id).append("<h4>" + data[i].city + "</h4>");
                         $("#school-well-" + data[i].id).append("<h5>Cost: $" + data[i].in_state + ".00</h5>");
                         $("#school-well-" + data[i].id).append("<a href='https://" + data[i].school_url + "'/a>" + data[i].inst_name + " Website<br><hr>");
-                    //}
+                    }
                 }
             })
         })         
