@@ -37,10 +37,13 @@
                     <a href="/search">Search</a>
                 </li>
                 <li>
-                    <a class='modal-trigger' href="#modal1">Login / Sign up</a>
+                    <a class='modal-trigger login' href="#modal1">Login / Sign up</a>
                 </li>
                 <li>
-                    <a href="/profile"><i class="material-icons">account_circle</i></a>
+                    <a href="/profile"><i class="material-icons profile-icon">account_circle</i></a>
+                </li>
+                <li>
+                    <a href="#" class="logoutBtn">Logout</a>
                 </li>
             </ul>
         </div>
@@ -51,10 +54,13 @@
             <a href="/search">Search</a>
         </li>
         <li>
-            <a class='modal-trigger' href="#modal1">Login / Sign up</a>
+            <a class='modal-trigger login' href="#modal1">Login / Sign up</a>
         </li>
         <li>
-            <a href="/profile">Profile</a>
+            <a href="/profile" class='profile'>Profile</a>
+        </li>
+        <li>
+            <a href="#" class="logoutBtn">Logout</a>
         </li>
     </ul>
 
@@ -90,32 +96,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class='col s6 offset-s1'>
-                    <label>
-                        <input type="checkbox" id='rememberMe' class="filled-in" checked="checked" />
-                        <span>Remember Me</span>
-                    </label>
-                </div>
-            </div>
-            <div class="row">
                 <div class="input-field col s12 center-align">
                     <a href="#" class="btn waves-effect waves-light loginBtn">Login</a>
-                    <a href="#" class="btn waves-effect waves-light logoutBtn">Logout</a>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
-                    <p class="medium-small">
+                    <p class="medium">
                         <a href="/signup">Register Now!</a>
                     </p>
                 </div>
-                <div class="input-field col s6 m6 l6">
-                    <p class="right-align medium-small">
-                        <a href="page-forgot-password.html">Forgot password?</a>
-                    </p>
-                </div>
             </div>
-
         </form>
 
     </div>
