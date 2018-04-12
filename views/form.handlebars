@@ -114,8 +114,12 @@
                 return;
             };
 
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
+                }
+            })
             // send user data to firebase
-            addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
             $.post("/api/students", userInput);
             $.get("/api/schools", function(data){
