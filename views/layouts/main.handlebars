@@ -26,7 +26,7 @@
 
 <body>
     <!-- Nav Bar -->
-    <nav class="nav-extended hoverable">
+    <nav class="nav-extended hoverable light-green darken-3">
         <div class="nav-wrapper container">
             <a href="/" class="brand-logo">North Carolina Higher Education</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -40,10 +40,7 @@
                     <a class='modal-trigger' href="#modal1">Login / Sign up</a>
                 </li>
                 <li>
-                    <a href="/profile">Profile</a>
-                </li>
-                <li>
-                    <i class="material-icons">account_circle</i>
+                    <a href="/profile"><i class="material-icons">account_circle</i></a>
                 </li>
             </ul>
         </div>
@@ -127,7 +124,7 @@
 
     {{{body}}}
 
-    <footer class="page-footer blue">
+    <footer class="page-footer light-green darken-3">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -137,13 +134,13 @@
                     <h5 class="white-text" href="/">Home</h5>
                     <ul>
                         <li>
+                            <a class="grey-text text-lighten-3" href="/profile"><i class="material-icons">account_circle</i></a>
+                        </li>
+                        <li>
                             <a class="grey-text text-lighten-3" href="#!">Log out</a>
                         </li>
                         <li>
                             <a class="modal-trigger grey-text text-lighten-3" href="#modal1">Login / Sign up</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="https://www.visitnc.com/">Visit NC</a>
                         </li>
                     </ul>
                 </div>
@@ -217,9 +214,9 @@
                     return;
                 };
                 
-                var auth = firebase.auth();
+                // var auth = firebase.auth();
                 // sign-in
-                var promise = auth.signInWithEmailAndPassword(email, pass);
+                var promise = firebase.auth().signInWithEmailAndPassword(email, pass);
                 // promise.catch(e => console.log(e.message));
                 promise.catch(function(event) {
                     console.log(event.message);
