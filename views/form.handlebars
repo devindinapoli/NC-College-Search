@@ -145,11 +145,8 @@
         $("#submit").on("click", function(event){
             event.preventDefault();
             $('.results-field').show();
-            $('.results-field').empty();
+            $('.results-field').empty();            
 
-            // added event.preventDefault(); to test sending searches to firebase
-            // the userInput object and $.post causing errors and breaking page before running firebase code
-            //event.preventDefault();
 
             var userInput = {
                 degree_type: $("#degree option:checked").val(),
@@ -160,7 +157,6 @@
             var degree_type = $('#degree option:checked').text();
             var program = $('#program option:checked').text();
             var max_tuition = $('#price').val().trim();
-
 
             function validateForm() {
             var isValid = true;
@@ -176,11 +172,10 @@
             };
 
             // send user data to firebase
+            // the addSearch() and $.post causing errors and breaking page before running firebase code
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
             $.post("/api/students", userInput);
-
-<<<<<<< HEAD
             $.get("/api/schools", function(data){
                 console.log(data);
                 for(var i = 0; i < data.length; i++) {
@@ -196,27 +191,6 @@
                     }
                 }
             })
-=======
-            var db = require("../models");
-            
-            $.get("/api/schools", function(req,res){
-              
-            //$.get("/api/schools", function(){
-                //console.log(data);
-                //for(var i = 0; i < data.length; i++) {
-                    //if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
-                        //var schoolSection = $("<div>");
-                        //schoolSection.addClass("school");
-                        //schoolSection.attr("id","school-well-" + data[i].id);
-                        //$(".results-field").append(schoolSection);
-                        //$("#school-well-" + data[i].id).append("<h3>" + data[i].inst_name + "</h3>");
-                        //$("#school-well-" + data[i].id).append("<h4>" + data[i].city + "</h4>");
-                        //$("#school-well-" + data[i].id).append("<h5>Cost: $" + data[i].in_state + ".00</h5>");
-                        //$("#school-well-" + data[i].id).append("<a href='https://" + data[i].school_url + "'/a>" + data[i].inst_name + " Website<br><hr>");
-                    //}
-                //}
-            //})
->>>>>>> 0755510bcdf8536cfce6046e9c07754d969581d9
         })         
    
         // function that adds new user search to firebase

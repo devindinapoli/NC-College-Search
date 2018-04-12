@@ -31,7 +31,7 @@ $(document).ready(function() {
             console.log('new uid: ' + firebase.auth().currentUser.uid);
             writeUserData(firebase.auth().currentUser.uid, firstName, lastName, email, state);
             // user data is not being sent to firebase when 
-            // window.location.replace('/');
+            
         }).catch(function (event) {            
             console.log(event.message)
         });      
@@ -51,10 +51,12 @@ $(document).ready(function() {
     // use them in Security and Firebase Rules, and show profiles
     function writeUserData(userId, firstName, lastName, email, state) {
         firebase.database().ref('users/' + userId).set({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        state: state
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            state: state
+        }, function (err) {
+            window.location.replace('/');
         });
     };
 
