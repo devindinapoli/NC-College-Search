@@ -1,29 +1,17 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
     background-color: snow;
 }
 
-main {
-    flex: 1 0 auto;
-}
 /* Nav Bar style */
 nav {
     background: skyblue;
+}    
+main {
+    flex: 1 0 auto;
 }
 
-.bluetabs {
-    background: steelblue;
-}
-
-
-.material-icons {
-    color: steelblue;
-}
-
-#rememberMe [type=checkbox]:checked {
-    background: steelblue;
+li {
+    font-size: 16pt;
 }
 
 .parallax-container {
@@ -32,6 +20,6 @@ nav {
 
 .results-field {
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
+    z-index: 10;
 }
-

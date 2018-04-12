@@ -2,9 +2,7 @@
     
     <h2 class="center-align">Search North Carolina's Colleges</h2>
     <p class="center-align">Sign up to keep track of your favorites!</p>
-    
-        <form class="col s12">
-
+      
         <div class="row">
         <label>Degree Type</label>
         <select class="browser-default" id="degree">
@@ -113,9 +111,13 @@
         </form>
         <br>
 
+         <div class="results-field">
+        
+        </div>
+
         <!-- results handlebars -->
 
-        <div class="row" id="results">
+        {{!-- <div class="row" id="results">
             <div class="container">
                 <h4>{{#if user}}
                     Hi, {{this.firstname}}, welcome back!                  
@@ -127,18 +129,11 @@
                     </a>
                 {{/each}}
             </div>
-        </div>
+        </div> --}}
         </div>
         
     </div>
-
-   
-         <div class="container results-field">
-        
-        </div>
   
-        
-
 <!-- End Results page -->
         
     </div>
@@ -152,9 +147,9 @@
             $('.results-field').show();
             $('.results-field').empty();            
 
+
             var userInput = {
                 degree_type: $("#degree option:checked").val(),
-                city: $("#city option:checked").val(),
                 program: $("#program option:checked").val(),
                 max_tuition: $("#price").val().trim() 
             };
@@ -180,7 +175,9 @@
             // the addSearch() and $.post causing errors and breaking page before running firebase code
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
+            $.post("/api/students", userInput);
             $.get("/api/schools", function(data){
+                console.log(data);
                 for(var i = 0; i < data.length; i++) {
                     if(userInput.degree_type == data[i].degree_type && userInput.max_tuition >= data[i].in_state) {
                         var schoolSection = $("<div>");
@@ -204,7 +201,7 @@
                 max_tuition: max_tuition
                 };
             firebase.database().ref('users/' + userId).child('searches').push(searchObject);
-            console.log('Search object sent to firebase: ' + searchObject);
+            console.log(searchObject);
         };
 
     })
