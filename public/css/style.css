@@ -23,3 +23,40 @@ li {
     overflow: auto;
     z-index: 10;
 }
+
+.header-font {
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+@media only screen and (max-width: 995px) {
+    nav .brand-logo {
+        font-size: 20px;
+    }
+}
+
+.topColleges, .topCommunityColleges {
+    display: grid;
+    grid-gap: 0px 20px;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+}
+
+.card {
+    grid-column-start: span(1);
+}
+
+.flex {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content>p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-image {
+    padding: 10px 5px 0px;
+}
