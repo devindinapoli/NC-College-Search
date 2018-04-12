@@ -115,7 +115,6 @@
             };
 
             // send user data to firebase
-            // the addSearch() and $.post causing errors and breaking page before running firebase code
             addSearch(firebase.auth().currentUser.uid, degree_type, program, max_tuition);
 
             $.post("/api/students", userInput);

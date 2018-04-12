@@ -3,12 +3,11 @@
 <div class="container profile">
     {{!-- Photo and Name --}}
     <div class="row">
-        <button class="btn waves-effect waves-light blue" type="submit" name="action" id="history">View Profile
-        </button>
+        <input type='file' id='fileButton'>
     </div>
 
     <div class="row">
-        <img src="images/man.jpeg" style='width:400px;height:300px;' alt="User Photo" id='userPhoto'>
+        <img src="images/man.jpeg" style='width:200px;height:200px;' alt="User Photo" id='userPhoto'>
         <br>
         <h3 id='firstName'>Name</h3>
         <h3 id='lastName'>Here</h3>
@@ -60,9 +59,40 @@ $(document).ready(function(){
 
     // Button added to execute firebase calls
     $("#history").on("click", function(event){
-        displaySearches();
-        displayUser();
     });        
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            displaySearches();
+            displayUser();
+            firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid).getDownloadURL().then(function(url) {
+                console.log(url);
+              
+                // insert url into image src
+                var img = document.getElementById('userPhoto');
+                img.src = url;
+                }).catch(function(error) {
+                // Handle any errors
+            });
+        }
+        // else clear out profile
+    })
+
+    // get elements    
+    var fileButton = document.getElementById('fileButton');
+
+    // Listen for file selection
+    fileButton.addEventListener('change', function(e) {
+        // Get file
+        var file = e.target.files[0];
+
+        // Create a storage ref
+        var storageRef = firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid);
+        // substitute file.name with uid
+
+        // Upload file
+        storageRef.put(file);        
+    });
 
     // displays first name and last name
     function displayUser() {

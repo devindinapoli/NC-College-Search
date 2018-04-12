@@ -180,18 +180,19 @@
             }
         });
 
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
+            authDomain: "college-finder-738c6.firebaseapp.com",
+            databaseURL: "https://college-finder-738c6.firebaseio.com",
+            projectId: "college-finder-738c6",
+            storageBucket: "college-finder-738c6.appspot.com",
+            messagingSenderId: "1076388845287"
+        };
+        firebase.initializeApp(config);
+
         $(document).ready(function() {
 
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyAFA_1zt0lcNdNWK12Qc6elrZBP0GpGSUQ",
-                authDomain: "college-finder-738c6.firebaseapp.com",
-                databaseURL: "https://college-finder-738c6.firebaseio.com",
-                projectId: "college-finder-738c6",
-                storageBucket: "college-finder-738c6.appspot.com",
-                messagingSenderId: "1076388845287"
-            };
-            firebase.initializeApp(config);
 
             // log-out button
             $('.logoutBtn').on('click', function (event) {
@@ -230,11 +231,14 @@
             });                   
             
             // add realtime listener to check if a user is logged in
+            // find conditional to see if logged in or not
             firebase.auth().onAuthStateChanged(function (firebaseUser) {
                 if(firebaseUser) {
                     console.log(firebase.auth().currentUser.email + ' is currently logged in.');
+                    $('.logoutBtn').show();
                 } else {
                     console.log('Not logged in.');
+                    $('#logoutBtn').hide();
                 };
                 $('.modal').modal('close');
             }); 
