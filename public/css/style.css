@@ -1,10 +1,11 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
     background-color: snow;
 }
 
+/* Nav Bar style */
+nav {
+    background: skyblue;
+}    
 main {
     flex: 1 0 auto;
 }
@@ -23,7 +24,6 @@ li {
 
 .results-field {
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
+    z-index: 10;
 }
-
-
