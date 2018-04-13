@@ -65,15 +65,7 @@ $(document).ready(function(){
         if (user) {
             displaySearches();
             displayUser();
-            firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid).getDownloadURL().then(function(url) {
-                console.log(url);
-              
-                // insert url into image src
-                var img = document.getElementById('userPhoto');
-                img.src = url;
-                }).catch(function(error) {
-                // Handle any errors
-            });
+            displayPic();
         }
         // else clear out profile
     })
@@ -90,9 +82,25 @@ $(document).ready(function(){
         var storageRef = firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid);
         // substitute file.name with uid
 
-        // Upload file
-        storageRef.put(file);        
+        // Upload file then use promise to display pic
+        storageRef.put(file).then(function(snap) {
+            displayPic();
+        });
+                 
     });
+
+    // use url of image uploaded by user to display profile picture
+    function displayPic() {
+        firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid).getDownloadURL().then(function(url) {
+            console.log(url);
+            
+            // insert url into image src
+            var img = document.getElementById('userPhoto');
+            img.src = url;
+            }).catch(function(error) {
+            // Handle any errors
+        });
+    }
 
     // displays first name and last name
     function displayUser() {
