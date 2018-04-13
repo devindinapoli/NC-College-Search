@@ -3,9 +3,7 @@ body {
 }
 
 /* Nav Bar style */
-nav {
-    background: skyblue;
-}    
+  
 main {
     flex: 1 0 auto;
 }
@@ -27,6 +25,11 @@ li {
 .header-font {
     font-family: 'Nanum Myeongjo', serif;
 }
+
+.content-font {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
 
 @media only screen and (max-width: 995px) {
     nav .brand-logo {
@@ -70,5 +73,5 @@ li {
 }
 
 .image-div {
-    height: 30px;
+    height: 63.75px;
 }

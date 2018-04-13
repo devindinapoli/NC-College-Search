@@ -17,12 +17,13 @@
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
     <!-- Linkning personal style sheet -->
     <link rel="stylesheet" href="css/style.css" type='text/css'> {{!-- link to firebase --}}
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
-    <link rel="shortcut icon" href="../../images/schoolicon.png" />    
+    <link rel="shortcut icon" href="../../images/schoolicon.png" />
     <title>NC Colleges</title>
 
 </head>
@@ -42,8 +43,10 @@
                 <li>
                     <a class='modal-trigger login' href="#modal1">Login / Sign up</a>
                 </li>
-                <li class='image-div'>
-                    <a href="/profile"><img id="img-circle" src="/images/man1.png"></a>
+                <li>
+                    <a href="/profile" class='image-div'>
+                        <img id="img-circle" src="/images/man1.png">
+                    </a>
                 </li>
                 <li>
                     <a href="#" class="logoutBtn">Logout</a>
@@ -74,8 +77,8 @@
         <form class="login-form">
             <div class="row">
                 <div class="input-field col s12 center">
-                    <i class="large material-icons">insert_chart</i>
-                    <p class="center login-form-text">Material Design Admin Template</p>
+                    <img src="/images/Flag.jpg" style='height:100px;width:200px;' alt="nc flag">
+                    <p class="center login-form-text header-font">Login Or Create An Account</p>
                 </div>
             </div>
 
@@ -104,7 +107,7 @@
 
             <div class="row">
                 <div class="input-field col s12 center-align">
-                    <a href="#" class="btn waves-effect waves-light loginBtn">Login</a>
+                    <a href="#" class="btn waves-effect waves-light loginBtn" style='background-color:steelblue;'>Login</a>
                 </div>
             </div>
             <div class="row">
@@ -186,7 +189,7 @@
         };
         firebase.initializeApp(config);
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
 
             // log-out button
@@ -196,7 +199,7 @@
             });
 
             // Add log-in event
-            $('.loginBtn').on('click', function(event) {
+            $('.loginBtn').on('click', function (event) {
                 // get email and pass
                 var email = $('#modal-email').val().trim();
                 var pass = $('#modal-password').val().trim();
@@ -211,36 +214,36 @@
                     }
                     return isValid;
                 };
-                if(!validateForm()) {
+                if (!validateForm()) {
                     return;
                 };
-                
+
                 // sign-in
                 var promise = firebase.auth().signInWithEmailAndPassword(email, pass);
                 // promise.catch(e => console.log(e.message));
-                promise.catch(function(event) {
+                promise.catch(function (event) {
                     console.log(event.message);
                 });
 
-                
-            });                   
-            
+
+            });
+
             // add realtime listener to check if a user is logged in
             // find conditional to see if logged in or not
             firebase.auth().onAuthStateChanged(function (firebaseUser) {
-                if(firebaseUser) {
+                if (firebaseUser) {
                     console.log(firebase.auth().currentUser.email + ' is currently logged in.');
                     $('.logoutBtn').show();
                     $('.login').hide();
-                    firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid).getDownloadURL().then(function(url) {
-                    console.log(url);
-                
-                    // insert url into image src
-                    var img = document.getElementById('img-circle');
-                    img.src = url;
-                    }).catch(function(error) {
-                    // Handle any errors
-                });
+                    firebase.storage().ref('profile_photo/' + firebase.auth().currentUser.uid).getDownloadURL().then(function (url) {
+                        console.log(url);
+
+                        // insert url into image src
+                        var img = document.getElementById('img-circle');
+                        img.src = url;
+                    }).catch(function (error) {
+                        // Handle any errors
+                    });
                 } else {
                     console.log('Not logged in.');
                     $('.logoutBtn').hide();
@@ -249,9 +252,9 @@
                     img.src = "/images/man1.png";
                 };
                 $('.modal').modal('close');
-            }); 
+            });
         });
-        
+
     </script>
 
 
