@@ -1,4 +1,4 @@
-# Project-02
+# NC-College-Search
 
 ## Heroku
 Our NC College Search is deployed to Heroku [here](https://pure-ridge-94757.herokuapp.com/).
